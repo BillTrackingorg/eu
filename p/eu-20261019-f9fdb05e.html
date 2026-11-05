@@ -33,12 +33,7 @@
     /* .post-date is gone (D37): the card's own footer says the posting day
        now, and its action line the event date; the heading takes the
        dateline's bottom margin so the card sits where it did. */
-    /* The static card (see this block's header). */
-    .post-wrap .card-deferred { display: block; }
-    .post-wrap .card-body { max-height: none; overflow: visible; }
-    .post-wrap .card-body::after { content: none; }
-    .post-wrap .card-title { display: block; -webkit-line-clamp: none; }
-    .post-wrap .card-expander { display: none; }
+    /* The card itself is feed.css's, open by its own class (this block's header). */
     /* The funnel is FLAT — no panel, by ruling (funnelHtml's header).
        padding: 0 is LOAD-BEARING: style.css's marketing rhythm (main section
        { padding: 3.25rem 0 }) reaches this section, and the old panel's own
@@ -154,7 +149,7 @@ https://billtracking.org/eu/p/eu-20261019-f9fdb05e"><svg class="glyph" aria-hidd
   <div class="card-body" id="eu-20261019-f9fdb05e-body"><h2 class="card-headline" id="t-eu-20261019-f9fdb05e">Today in Parliament — Strasbourg</h2><div class="card-body-lines"><p>Scheduled today:</p><p>Suspending the application of the rules on extended producer responsibility for waste, waste electrical and electronical equipment and single use plastic waste (Omnibus VIII on environmental legislation) [2025/0396(COD)]</p><p>Suspending the application of the rules on extended producer responsibility for batteries and waste batteries and packaging and packaging waste (Omnibus VIII on environmental legislation) [2025/0395(COD)]</p><p>Amendments to the Critical Raw Materials Act [2025/0385(COD)]</p><p>Cohesion policy – the driving force in implementing the EU agenda for cities [2026/2027(INI)]</p><p>International Day for the Eradication of Poverty [2026/2925(RSP)]</p><p class="card-caveat" data-caveat="1">Draft agenda — items can move or drop. Full agenda on the Parliament&#39;s plenary site.</p></div></div>
   <div class="card-anchored"></div>
   <div class="card-deferred"></div>
-  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20261019-f9fdb05e-body"><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
+  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20261019-f9fdb05e-body" hidden><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
   <p class="card-posted">Posted 19 October 2026</p>
 </article>
 

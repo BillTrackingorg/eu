@@ -33,12 +33,7 @@
     /* .post-date is gone (D37): the card's own footer says the posting day
        now, and its action line the event date; the heading takes the
        dateline's bottom margin so the card sits where it did. */
-    /* The static card (see this block's header). */
-    .post-wrap .card-deferred { display: block; }
-    .post-wrap .card-body { max-height: none; overflow: visible; }
-    .post-wrap .card-body::after { content: none; }
-    .post-wrap .card-title { display: block; -webkit-line-clamp: none; }
-    .post-wrap .card-expander { display: none; }
+    /* The card itself is feed.css's, open by its own class (this block's header). */
     /* The funnel is FLAT — no panel, by ruling (funnelHtml's header).
        padding: 0 is LOAD-BEARING: style.css's marketing rhythm (main section
        { padding: 3.25rem 0 }) reaches this section, and the old panel's own
@@ -154,7 +149,7 @@ https://billtracking.org/eu/p/eu-20260914-53f6db41"><svg class="glyph" aria-hidd
   <div class="card-body" id="eu-20260914-53f6db41-body"><h2 class="card-headline" id="t-eu-20260914-53f6db41">Today in Parliament — Strasbourg</h2><div class="card-body-lines"><p>Scheduled today:</p><p>Establishing the Union Customs Code and the European Union Customs Authority [2023/0156(COD)]</p><p>Carbon Border Adjustment Mechanism: extension of its scope to downstream goods and anti-circumvention measures [2025/0419(COD)]</p><p>Establishing the Temporary Decarbonisation Fund [2025/0418(COD)]</p><p>Market stability reserve for the EU Emissions Trading System (EU ETS): ceasing the invalidation of allowances [2026/0085(COD)]</p><p>Public Procurement Act [2026/2865(RSP)]</p><p class="card-caveat" data-caveat="1">Draft agenda — items can move or drop. Full agenda on the Parliament&#39;s plenary site.</p></div></div>
   <div class="card-anchored"></div>
   <div class="card-deferred"></div>
-  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20260914-53f6db41-body"><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
+  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20260914-53f6db41-body" hidden><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
   <p class="card-posted">Posted 14 September 2026</p>
 </article>
 

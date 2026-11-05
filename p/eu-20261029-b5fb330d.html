@@ -33,12 +33,7 @@
     /* .post-date is gone (D37): the card's own footer says the posting day
        now, and its action line the event date; the heading takes the
        dateline's bottom margin so the card sits where it did. */
-    /* The static card (see this block's header). */
-    .post-wrap .card-deferred { display: block; }
-    .post-wrap .card-body { max-height: none; overflow: visible; }
-    .post-wrap .card-body::after { content: none; }
-    .post-wrap .card-title { display: block; -webkit-line-clamp: none; }
-    .post-wrap .card-expander { display: none; }
+    /* The card itself is feed.css's, open by its own class (this block's header). */
     /* The funnel is FLAT — no panel, by ruling (funnelHtml's header).
        padding: 0 is LOAD-BEARING: style.css's marketing rhythm (main section
        { padding: 3.25rem 0 }) reaches this section, and the old panel's own
@@ -151,7 +146,7 @@ https://billtracking.org/eu/p/eu-20261029-b5fb330d"><svg class="glyph" aria-hidd
   <div class="card-body" id="eu-20261029-b5fb330d-body"><h2 class="card-title" id="t-eu-20261029-b5fb330d">Reduction of methane emissions in the energy sector: postponement of certain obligations</h2><p class="card-meta">ENVI</p><p class="card-action"><svg class="glyph glyph-cal" aria-hidden="true"><use href="#calendar-event-band"/></svg><span class="card-action-date"> 22 October 2026  |  </span><span class="glyph-wrap"><svg class="glyph glyph-label" aria-hidden="true"><use href="#arrow-back-up"/></svg></span><span class="card-action-label">Plenary sent the file back to committee</span></p></div>
   <div class="card-anchored"><p class="card-next"><span class="lead">What&#39;s next: </span>The committee will keep working on the text — typically to continue negotiations — before it returns to plenary. No deadline applies.</p></div>
   <div class="card-deferred"><p class="card-older-note">⏱ About older actions: this event took place some time before it was posted. Official records are routinely updated after the fact — clerical entries, corrections and late filings all surface older actions as new activity. The date shown above is the event&#39;s official date.</p></div>
-  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20261029-b5fb330d-body"><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
+  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20261029-b5fb330d-body" hidden><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
   <div class="card-strip"><button class="card-strip-glyph" aria-label="Vote breakdown"><svg class="glyph" aria-hidden="true"><use href="#chart-bar"/></svg></button><div class="vote-chips" role="group" aria-label="Your stance on the file"><button class="vote-chip" data-dir="up" aria-pressed="false" disabled>▲ For</button><button class="vote-chip" data-dir="down" aria-pressed="false" disabled>▼ Against</button></div>
   </div>
   <div class="card-foot"><p class="card-posted">Posted 29 October 2026</p><p class="vote-reason">Sign in to vote or follow</p></div>

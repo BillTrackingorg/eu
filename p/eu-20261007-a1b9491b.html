@@ -33,12 +33,7 @@
     /* .post-date is gone (D37): the card's own footer says the posting day
        now, and its action line the event date; the heading takes the
        dateline's bottom margin so the card sits where it did. */
-    /* The static card (see this block's header). */
-    .post-wrap .card-deferred { display: block; }
-    .post-wrap .card-body { max-height: none; overflow: visible; }
-    .post-wrap .card-body::after { content: none; }
-    .post-wrap .card-title { display: block; -webkit-line-clamp: none; }
-    .post-wrap .card-expander { display: none; }
+    /* The card itself is feed.css's, open by its own class (this block's header). */
     /* The funnel is FLAT — no panel, by ruling (funnelHtml's header).
        padding: 0 is LOAD-BEARING: style.css's marketing rhythm (main section
        { padding: 3.25rem 0 }) reaches this section, and the old panel's own
@@ -152,7 +147,7 @@ https://billtracking.org/eu/p/eu-20261007-a1b9491b"><svg class="glyph" aria-hidd
   <div class="card-body" id="eu-20261007-a1b9491b-body"><h2 class="card-headline" id="t-eu-20261007-a1b9491b">EU legislative roundup</h2><div class="card-body-lines"><p>2025/0312(COD): Economic and budgetary surveillance of Member States in the euro area experiencing or threatened with serious difficulties with respect to their financial stability — Parliament adopted its 1st-reading position</p><p>2026/0078(COD): Programme for agile and rapid defence innovation (AGILE) — Parliament adopted its 1st-reading position</p><p>2025/0311(COD): Alignment with the EU economic governance framework and further simplification of that framework — Parliament adopted its 1st-reading position</p><p>2025/0232(COD): Protection of workers from the risks related to exposure to carcinogens or mutagens at work — Parliament adopted its 1st-reading position</p><p>Sources: the OEIL procedure files for each reference above.</p></div></div>
   <div class="card-anchored"></div>
   <div class="card-deferred"></div>
-  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20261007-a1b9491b-body"><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
+  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20261007-a1b9491b-body" hidden><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
   <p class="card-posted">Posted 7 October 2026</p>
 </article>
 

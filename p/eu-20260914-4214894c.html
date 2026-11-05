@@ -33,12 +33,7 @@
     /* .post-date is gone (D37): the card's own footer says the posting day
        now, and its action line the event date; the heading takes the
        dateline's bottom margin so the card sits where it did. */
-    /* The static card (see this block's header). */
-    .post-wrap .card-deferred { display: block; }
-    .post-wrap .card-body { max-height: none; overflow: visible; }
-    .post-wrap .card-body::after { content: none; }
-    .post-wrap .card-title { display: block; -webkit-line-clamp: none; }
-    .post-wrap .card-expander { display: none; }
+    /* The card itself is feed.css's, open by its own class (this block's header). */
     /* The funnel is FLAT — no panel, by ruling (funnelHtml's header).
        padding: 0 is LOAD-BEARING: style.css's marketing rhythm (main section
        { padding: 3.25rem 0 }) reaches this section, and the old panel's own
@@ -150,7 +145,7 @@ https://billtracking.org/eu/p/eu-20260914-4214894c"><svg class="glyph" aria-hidd
   <div class="card-body" id="eu-20260914-4214894c-body"><h2 class="card-title" id="t-eu-20260914-4214894c">Establishing the Union Customs Code and the European Union Customs Authority</h2><p class="card-meta">IMCO · Dirk Gotink (EPP)</p><p class="card-action"><svg class="glyph glyph-cal" aria-hidden="true"><use href="#calendar-event-band"/></svg><span class="card-action-date"> 14 September 2026  |  </span><span class="glyph-wrap"><svg class="glyph glyph-label" style="--glyph-stroke:1.95" aria-hidden="true"><use href="#ballot"/></svg></span><span class="card-action-label">Lead committee adopted its 2nd-reading recommendation</span></p></div>
   <div class="card-anchored"><p class="card-next"><span class="lead">What&#39;s next: </span>Plenary decides on the Council&#39;s position within the 3-month (+1 on request) second-reading window: approve it or stay silent (the act is adopted), amend it, or reject it — amendment or rejection needs an absolute majority of all MEPs (361 of 720).</p></div>
   <div class="card-deferred"></div>
-  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20260914-4214894c-body"><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
+  <div class="card-controls"><button class="card-expander" aria-expanded="true" aria-controls="eu-20260914-4214894c-body" hidden><span class="card-expander-label">Show less</span><svg class="glyph" aria-hidden="true"><use href="#chevron-up"/></svg></button></div>
   <div class="card-strip"><button class="card-strip-glyph" aria-label="Vote breakdown"><svg class="glyph" aria-hidden="true"><use href="#chart-bar"/></svg></button><div class="vote-chips" role="group" aria-label="Your stance on the file"><button class="vote-chip" data-dir="up" aria-pressed="false" disabled>▲ For</button><button class="vote-chip" data-dir="down" aria-pressed="false" disabled>▼ Against</button></div>
   </div>
   <div class="card-foot"><p class="card-posted">Posted 14 September 2026</p><p class="vote-reason">Sign in to vote or follow</p></div>
