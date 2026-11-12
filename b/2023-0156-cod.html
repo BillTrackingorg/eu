@@ -21,6 +21,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/assets/css/feed.css?v=63">
 <style>:root { --accent: var(--royal); }
     .bill-wrap { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
     .crumbs { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint);
@@ -32,7 +33,6 @@
       color: var(--navy-ink); margin: .35rem 0 .2rem; }
     .bill-title { font-family: var(--serif); font-size: 1.25rem; color: var(--ink);
       line-height: 1.4; margin: 0 0 .5rem; }
-    .bill-meta { font-family: var(--sans); color: var(--ink-faint); font-size: .9rem; margin: 0 0 1rem; }
     .bill-summary { background: var(--wash); border: 1px solid var(--line);
       border-radius: var(--radius); padding: .9rem 1.1rem; font-size: 1rem; line-height: 1.65;
       color: var(--ink); margin: 0 0 1.2rem; }
@@ -65,11 +65,41 @@
       outline-offset: 2px; }
     .bill-summary .summary-ai-note { font-family: var(--sans); font-size: .82rem; line-height: 1.5;
       color: #5E6E82; margin-top: .6rem; }
-    .bill-status { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
-      border-left: 3px solid var(--accent); padding: .3rem 0 .3rem .9rem; margin: 0 0 .4rem; }
-    .bill-status .st-label { font-size: 1.1rem; font-weight: 650; color: var(--navy-ink); }
-    .bill-status .st-date { font-family: var(--sans); font-size: .88rem; color: var(--ink-faint); }
-    .bill-asof { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); margin: 0 0 1.6rem; }
+    .bill-wrap { --ink-faint-aa: #5E6E82; }
+    .bill-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: .6rem; }
+    .bill-top .bill-kicker { margin: 0; }
+    .bill-top .card-follow-note { flex: 0 0 100%; text-align: right; margin-top: 4px; }
+    .bill-wrap .card-bell .glyph, .bill-wrap .card-strip-glyph .glyph { color: inherit; }
+    .bill-overview { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 12px;
+      margin: 14px 0 0; box-shadow: 0 1px 4px rgba(10, 49, 97, .05); }
+    .ov-facts { margin: 0; }
+    .ov-fact { display: flex; gap: 12px; }
+    .ov-fact + .ov-fact { margin-top: 7px; }
+    .ov-fact dt { flex: 0 0 96px; font-family: var(--sans); font-weight: 600; font-size: 10.5px; line-height: 20px;
+      letter-spacing: .9px; text-transform: uppercase; color: var(--ink-faint-aa); }
+    .ov-fact dd { margin: 0; min-width: 0; font-family: var(--sans); font-size: 14px; line-height: 20px; color: var(--ink); }
+    .ov-vote.is-bare .card-strip { margin-top: 0; padding-top: 0; border-top: 0; }
+    .ov-vote .vote-reason { margin-top: 6px; }
+    .bill-section { margin-top: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(10, 49, 97, .05); }
+    .bill-section.is-path[open] { background: none; box-shadow: none; }
+    .bill-section-head { display: flex; align-items: center; justify-content: space-between; padding: 13px 14px;
+      cursor: pointer; list-style: none; font-family: var(--sans); font-weight: 600; font-size: 15px; line-height: 20px;
+      color: var(--ink); }
+    .bill-section-head::-webkit-details-marker { display: none; }
+    .bill-section-head .bill-chev { width: 18px; height: 18px; color: var(--ink-faint); stroke-width: 2; }
+    .bill-section[open] > .bill-section-head .bill-chev { transform: rotate(180deg); }
+    .bill-section-body { padding: 0 14px 14px; }
+    .bill-section.is-path > .bill-section-body { padding: 0 10px 10px; }
+    .bill-section .bill-summary { background: none; border: 0; border-radius: 0; padding: 0; margin: 0; }
+    .bill-caption { font-family: var(--sans); font-size: 11.5px; line-height: 16px; color: var(--ink-faint-aa);
+      margin: 10px 0 0; }
+    .bill-caption + .bill-caption { margin-top: 2px; }
+    .bill-foot { margin: 12px 0; }
+    .bill-find { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 14px;
+      color: var(--ink-soft); text-decoration: none; }
+    .bill-find .glyph { width: 18px; height: 18px; color: var(--accent); stroke-width: 1.5; }
+    .bill-find-site { font-weight: 600; color: var(--accent); }
     .path { list-style: none; padding: 0; margin: 0 0 1.6rem; border-top: 1px solid var(--line-soft); }
     .path li { padding: .75rem 0 .75rem 1.1rem; border-bottom: 1px solid var(--line-soft);
       border-left: 2px solid transparent; }
@@ -156,8 +186,8 @@
     .bill-links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.4rem;
       font-family: var(--sans); font-size: .9rem; }
     .bill-links a { color: var(--ink-soft); }
-    /* Visually hidden, still announced: the source link's new-tab note. This page
-       loads no feed.css, whose .sr-only this is. */
+    /* Visually hidden, still announced: the source link's new-tab note. The same
+       rule as feed.css's, kept with the markup it hides. */
     .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
       border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
 </style>
@@ -230,6 +260,11 @@
 <symbol id="ic-bell-filled" viewBox="0 0 24 24"><path d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z" fill="currentColor" stroke="none"/><path d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z" fill="currentColor" stroke="none"/></symbol>
 <symbol id="ic-calendar-event-band" viewBox="0 0 24 24"><rect x="4.8" y="5.9" width="14.4" height="4.4" rx="1.2" fill="var(--glyph-band, none)" stroke="none"/><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12"/><path d="M16 3l0 4"/><path d="M8 3l0 4"/><path d="M4 11l16 0"/><path d="M8 15h2v2h-2l0 -2"/></symbol>
 </svg>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="bell-plus" viewBox="0 0 24 24"><path d="M12.5 17h-8.5a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6a2 2 0 1 1 4 0a7 7 0 0 1 4 6v1"/><path d="M9 17v1a3 3 0 0 0 3.51 2.957"/><path d="M16 19h6"/><path d="M19 16v6"/></symbol>
+<symbol id="chart-bar" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-10z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-14z"/><path d="M4 20h14"/></symbol>
+<symbol id="bell-filled" viewBox="0 0 24 24"><path d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z" fill="currentColor" stroke="none"/><path d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z" fill="currentColor" stroke="none"/></symbol>
+</svg>
 <header class="site-header">
   <div class="wrap">
     <a class="wordmark" href="/">BillTracking<span class="tld">.org</span></a>
@@ -245,15 +280,19 @@
   </div>
 </header>
 
-<main class="bill-wrap" data-billkey="eu/2023-0156-cod">
+<main class="bill-wrap" data-polity="eu" data-billkey="eu/2023-0156-cod">
   <a class="back-link" href="/eu/" data-bt-back><svg class="back-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l14 0M5 12l6 6M5 12l6 -6"/></svg><span class="back-label">Back to the feed</span></a>
   <p class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/eu/b/">EU files</a> &rsaquo; 2023/0156(COD)</p>
-  <p class="bill-kicker">European Union</p>
+  <div class="bill-top"><p class="bill-kicker">European Union</p><button class="card-bell" type="button" aria-pressed="false" aria-label="Follow 2023/0156(COD) — new actions on it appear in your notifications." disabled><svg class="glyph" aria-hidden="true"><use href="#bell-plus"/></svg></button></div>
   <h1 class="bill-ref">2023/0156(COD)</h1>
   <h2 class="bill-title">Establishing the Union Customs Code and the European Union Customs Authority</h2>
-  <p class="bill-meta">IMCO · Dirk Gotink (EPP)</p>
-  <div class="bill-status"><span class="st-label"><span class="glyph-wrap has-badge"><svg class="glyph" aria-hidden="true"><use href="#ic-scroll"/></svg><span class="glyph-badge"><svg class="glyph" aria-hidden="true"><use href="#ic-check"/></svg></span></span>Published in the Official Journal</span> <span class="st-date">19 September 2026</span></div>
-  <p class="bill-asof">Record as of 19 September 2026 — the most recent action in the official record. Status can lag; each step below carries its own date.</p>
+  <div class="bill-overview"><dl class="ov-facts"><div class="ov-fact"><dt>Rapporteur</dt><dd>Dirk Gotink (EPP)</dd></div><div class="ov-fact"><dt>Committee</dt><dd>Internal Market and Consumer Protection (IMCO)</dd></div><div class="ov-fact"><dt>Status</dt><dd>Became law · Regulation 2026/2108</dd></div><div class="ov-fact"><dt>Proposed</dt><dd data-days-start="2023-05-17" data-days-kind="proposed" data-days-closed="true" data-days-end="2026-09-19">17 May 2023 – 19 September 2026</dd></div></dl><div class="ov-vote"><div class="card-strip" data-quiet-stance><button class="card-strip-glyph" aria-label="Vote breakdown"><svg class="glyph" aria-hidden="true"><use href="#chart-bar"/></svg></button><div class="vote-chips" role="group" aria-label="Your stance on the file"><button class="vote-chip" data-dir="up" aria-pressed="false" disabled>▲ For</button><button class="vote-chip" data-dir="down" aria-pressed="false" disabled>▼ Against</button></div>
+  </div><p class="vote-reason"></p></div></div>
+  <details class="bill-section is-summary"><summary class="bill-section-head"><span class="bill-section-title">Summary</span><svg class="glyph bill-chev" aria-hidden="true"><use href="#ic-chevron-down"/></svg></summary><div class="bill-section-body">
+  <div class="bill-summary has-tabs"><input type="radio" class="sum-pick" name="bsum" id="bsum-official" value="official" checked><input type="radio" class="sum-pick" name="bsum" id="bsum-ai" value="ai"><div class="sum-tabs"><label class="sum-tab" for="bsum-official" data-tab="official">Official summary</label><label class="sum-tab" for="bsum-ai" data-tab="ai">AI summary</label></div><div class="sum-panel" data-tab="official"><p class="summary-para"><span class="lead">Official summary (Legislative Observatory, Decision by Parliament, 2nd reading): </span>The European Parliament adopted a legislative resolution approving the Council&#39;s position at first reading with a view to the adoption of a regulation of the European Parliament and of the Council establishing the Union Customs Code and the European Union Customs Authority, and repealing Regulation (EU) No 952/2013.</p><p class="summary-para summary-gap-para">The overall aim of the Regulation is to address the challenges to the proper functioning of the customs union and the internal market, arising from internal and external risks and threats, and in particular by adjusting customs legislation to the development of global trade patterns, technology and business models, as well as the needs of stakeholders, including businesses, consumers and citizens.</p><p class="summary-para summary-gap-para">To address those challenges, the Regulation seeks to ensure a uniform level of digitalization and a level playing field for economic operators in all Member States.</p><p class="summary-para summary-gap-para">To this end, it contains the following provisions:</p><p class="summary-para summary-gap-para">Mission of the customs authorities</p><p class="summary-para summary-gap-para">The Regulation defines the mission of customs authorities as collecting duties, combating fraud, facilitating legitimate business activity, contributing to fair trade, as well as protecting safety, health, the environment and other public interests in cooperation with other competent authorities. In order to strengthen customs supervision, pursuant to the new definitions, importers and exporters are responsible vis-à-vis customs authorities to make sure that the goods comply with product specific legislation. The &quot;importer for distance sales&quot; concept creates a specific category for e-commerce operators selling goods from third countries into the Union.</p><p class="summary-para summary-gap-para">Union handling fee</p><p class="summary-para summary-gap-para">A new Union handling fee, consisting of a fixed amount per item for goods sold through distance sales, is introduced to cover the costs of services processing an application for release of such goods, with a lower fee applying to goods released from customs warehouses for distance sales.</p><p class="summary-para summary-gap-para">Operators&#39; obligations</p><p class="summary-para summary-gap-para">The regulation defines the rights and responsibilities of the main actors in customs processes:</p><p class="summary-item summary-gap-tight">- importers must, in general, be established in the customs territory of the Union, provide all the necessary data to customs before the release is granted, ensure that the goods comply with all applicable legislation and pay the customs duties;</p><p class="summary-item summary-gap-tight">- exporters have parallel obligations, namely to provide the required data before the release of goods, to ensure compliance with applicable legislation and, as a general rule, to be established in the Union.</p><p class="summary-para summary-gap-para">For both importers and exporters, the regulation also provides for certain exceptions to the obligation to be established in the Union.</p><p class="summary-para summary-gap-para">Authorised Economic Operators (AEOs)</p><p class="summary-para summary-gap-para">The Authorised Economic Operator (AEO) regime is being reformed. The criteria are being strengthened, as are the verification requirements. Customs authorities are required to conduct a thorough verification at least every three years. They may grant one or two types of authorisation: (i) AEO status for customs simplifications, which allows the holder to benefit from these simplifications, and (ii) AEO status for security and safety, which allows the holder to benefit from security and safety facilitation measures.</p><p class="summary-para summary-gap-para">The regulation also creates the status of &quot; Trust and Check trader &quot; reserved for companies meeting stricter requirements, including near real-time access to their data by customs authorities. In return, they benefit from streamlined procedures, such as obtaining the release of their goods without waiting for customs intervention (under certain conditions), deferring customs debt payments, and reducing controls. Particular attention is paid to micro, small, and medium-sized enterprises (MSMEs) to facilitate their access to Authorised Economic Operator (AEO) and Trust and Check trader status.</p><p class="summary-para summary-gap-para">Single European customs data platform</p><p class="summary-para summary-gap-para">The regulation establishes a centralised, secure, and interoperable digital platform to replace national customs IT systems for the collection, processing, and exchange of information relevant to the implementation of customs legislation. The platform will be designed to ensure data protection. Its infrastructure will be located within the Union and will be solely controlled and administered by the Commission or the EU Customs Authority. Only designated authorities will have access to the EU customs data platform for defined purposes.</p><p class="summary-para summary-gap-para">New EU Customs Authority</p><p class="summary-para summary-gap-para">The EU Customs Authority is established as a new decentralised EU agency, headquartered in Lille, France. Its responsibilities will include risk analysis at the European level, coordination of joint customs operations, management of the data platform, training of professionals, oversight of trusted operators and</p><p class="summary-para summary-gap-para">Distance sales</p><p class="summary-para summary-gap-para">Specific rules apply to distance selling: proportionate but dissuasive pecuniary charges are set (with minimum and maximum levels based on the total value of goods imported), aimed at preventing &quot;border-shopping.&quot; Systematic non-compliance (defined by implementing acts) triggers suspension of release, and potentially temporary suspension of access to the noncompliant operator&#39;s online interface (involving relevant digital authorities). Records of all penalties will be maintained in the EU Customs Data Hub for monitoring and transparency.</p><p class="summary-para summary-gap-para">The new system will be implemented gradually. Mandatory use of the platform by importers making distance sales will begin on 1 July 2028. Other operators will be able to use it voluntarily from 1 March 2031, before mandatory use from 1 March 2034.</p></div><div class="sum-panel" data-tab="ai" data-nosnippet><p class="summary-para">The European Parliament has approved a new set of EU customs rules, the Union Customs Code, which will create a new EU Customs Authority and replace the current customs regulation. The main goal is to help customs keep pace with changes in global trade, technology and business, while making sure the rules work the same way across all member states and remain fair for businesses.</p><p class="summary-para summary-gap-para">The new rules redefine the job of customs authorities. They must collect duties, fight fraud, make legitimate trade easier, support fair trade, and protect safety, health, the environment and other public interests together with other competent authorities. Importers and exporters become responsible for making sure their goods meet the relevant product rules. A new &quot;importer for distance sales&quot; category covers online sellers bringing goods from outside the EU into the Union.</p><p class="summary-para summary-gap-para">A new fixed handling fee per item will apply to goods sold through distance sales, to cover the cost of processing their release. Goods released from customs warehouses for distance sales will pay a lower fee. Importers and exporters must generally be established in the EU, provide the necessary data before goods are released, make sure goods comply with applicable law, and pay duties, though there are some exceptions to the requirement to be established in the EU.</p><p class="summary-para summary-gap-para">The Authorised Economic Operator scheme is being tightened, with stronger criteria and checks at least every three years. There will be two types of status: one for customs simplifications and one for security and safety facilitation. A stricter &quot;Trust and Check trader&quot; status will give companies faster clearance, deferred payment of customs debts and fewer controls, in return for near real-time access to their data by customs. Small and medium-sized businesses receive particular attention to help them qualify.</p><p class="summary-para summary-gap-para">The rules also set up a single, secure EU customs data platform to replace national systems, and create the EU Customs Authority, a new decentralised agency based in Lille, France. Separate rules target online sales, with penalties to discourage &quot;border-shopping,&quot; possible suspension of goods release and online access for repeatedly non-compliant operators, and a public record of penalties. The system will be introduced gradually: mandatory use for importers making distance sales starts on 1 July 2028, voluntary use by other operators from 1 March 2031, and mandatory use for them from 1 March 2034.</p><p class="summary-ai-note">Written by AI from the official summary (Legislative Observatory, Decision by Parliament, 2nd reading). AI can make mistakes.</p></div></div>
+  <p class="bill-caption">Last checked on 26 September 2026</p>
+  </div></details>
+  <details class="bill-section is-path"><summary class="bill-section-head"><span class="bill-section-title">Path</span><svg class="glyph bill-chev" aria-hidden="true"><use href="#ic-chevron-down"/></svg></summary><div class="bill-section-body">
   <ol class="path">
   <li class="spine" data-key="rec-2023/0156(COD)-54" data-kind="record"><a class="row-link" href="/eu/p/eu-20260923-080107c2"><span class="row-date">19 September 2026</span> <span class="row-label"><span class="row-opens"><span class="glyph-wrap has-badge"><svg class="glyph" aria-hidden="true"><use href="#ic-scroll"/></svg><span class="glyph-badge"><svg class="glyph" aria-hidden="true"><use href="#ic-check"/></svg></span></span>Published in the Official Journal</span></span><p class="row-next"><span class="lead">What&#39;s next: </span>It&#39;s law. It enters into force on the date it specifies or, if none, the 20th day after publication in the Official Journal.</p><svg class="glyph row-open" aria-hidden="true"><use href="#ic-chevron-right"/></svg></a></li>
   <li class="spine" data-key="rec-2023/0156(COD)-53" data-kind="record"><a class="row-link" href="/eu/p/eu-20260916-c1cf2ffd"><span class="row-date">16 September 2026</span> <span class="row-label"><span class="row-opens"><span class="glyph-wrap"><svg class="glyph" aria-hidden="true"><use href="#ic-signature"/></svg></span>Signed by the European Parliament and the Council</span></span><svg class="glyph row-open" aria-hidden="true"><use href="#ic-chevron-right"/></svg></a></li>
@@ -337,9 +376,10 @@
   </ol>
 
   <div class="honesty"><strong>This path starts where the file does — the legislative proposal in the official record.</strong> Routine procedural steps sit in the “more actions” rows above rather than on the main line.</div>
+  </div></details>
+  <p class="bill-foot"><a class="bill-find" href="https://oeil.europarl.europa.eu" target="_blank" rel="noopener" data-find-ref="2023/0156(COD)" data-find-a11y="Find it on OEIL — copies the reference, opens in a new tab"><svg class="glyph" aria-hidden="true"><use href="#ic-external-link"/></svg><span class="bill-find-lead">Find it on</span> <span class="bill-find-site">OEIL</span><span class="sr-only"> (opens in a new tab)</span></a></p>
   <p class="bill-links">
     <a href="/eu/">Read the live feed — on the site or in the app</a>
-    <a href="https://oeil.europarl.europa.eu" target="_blank" rel="noopener" data-find-ref="2023/0156(COD)" data-find-a11y="Find it on OEIL — copies the reference, opens in a new tab">Find it on OEIL<span class="sr-only"> (opens in a new tab)</span></a>
     <a href="/eu/b/">All EU files</a>
   </p>
 </main>
