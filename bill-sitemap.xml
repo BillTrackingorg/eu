@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://billtracking.org/eu/b/2026-0292-cns</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://billtracking.org/eu/b/2025-0391-cod</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://billtracking.org/eu/b/2025-0102-cod</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://billtracking.org/eu/b/2023-0132-cod</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://billtracking.org/eu/b/2023-0131-cod</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2025-0531-cod</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2025-0349-cod</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2025-0312-cod</loc><lastmod>2026-11-25</lastmod></url>
@@ -8,8 +13,6 @@
   <url><loc>https://billtracking.org/eu/b/2023-0437-cod</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2023-0169-cod</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2023-0134-cod</loc><lastmod>2026-11-25</lastmod></url>
-  <url><loc>https://billtracking.org/eu/b/2023-0132-cod</loc><lastmod>2026-11-25</lastmod></url>
-  <url><loc>https://billtracking.org/eu/b/2023-0131-cod</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2026-0365-cod</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2025-0543-cod</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2025-0362-cod</loc><lastmod>2026-11-11</lastmod></url>
@@ -48,8 +51,6 @@
   <url><loc>https://billtracking.org/eu/b/2026-0358-cod</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2026-0357-cod</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2026-0356-cod</loc><lastmod>2026-11-12</lastmod></url>
-  <url><loc>https://billtracking.org/eu/b/2026-0292-cns</loc><lastmod>2026-11-07</lastmod></url>
-  <url><loc>https://billtracking.org/eu/b/2025-0391-cod</loc><lastmod>2026-11-04</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2026-0302-cod</loc><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2025-0399-cod</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://billtracking.org/eu/b/2026-0261-cns</loc><lastmod>2026-09-10</lastmod></url>
